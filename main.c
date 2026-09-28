@@ -3,6 +3,7 @@
 #include "employees.h"
 #include "budget.h"
 #include "suppliers.h"
+#include "assets.h"
 
 
 void displayMainMenu(void);
@@ -59,7 +60,7 @@ int main()
                 break;
 
             case 4:
-                printf("\nAsset Management will be added later.\n");
+                assetManagement();
                 break;
 
             case 5:
