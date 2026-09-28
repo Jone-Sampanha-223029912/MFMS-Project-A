@@ -5,6 +5,7 @@
 #include "budget.h"
 #include "suppliers.h"
 #include "assets.h"
+#include "input.h"
 
 
 void reportsManagement(void)
@@ -23,8 +24,11 @@ void reportsManagement(void)
         printf("4. Asset Report\n");
         printf("5. Return to Main Menu\n");
 
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            5
+        );
 
         switch (choice)
         {

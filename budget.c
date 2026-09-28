@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "budget.h"
+#include "input.h"
 
 #define MAX_DEPARTMENTS 10
 
@@ -25,8 +26,11 @@ void budgetManagement(void)
         printf("2. Display Budgets\n");
         printf("3. Return to Main Menu\n");
 
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            3
+        );
 
         switch (choice)
         {
@@ -58,14 +62,17 @@ void addDepartmentBudget(void)
         return;
     }
 
-    printf("\nEnter Department Name: ");
-    scanf(" %49[^\n]", budgetDepartments[budgetCount]);
+    readText(
+        "Enter Department Name: ",
+        budgetDepartments[budgetCount],
+        sizeof(budgetDepartments[budgetCount])
+    );
 
-    printf("Enter Allocated Budget: ");
-    scanf("%lf", &allocatedBudgets[budgetCount]);
+    allocatedBudgets[budgetCount] =
+    readNonNegativeDouble("Enter Allocated Budget: ");
 
-    printf("Enter Expenditure: ");
-    scanf("%lf", &expenditures[budgetCount]);
+expenditures[budgetCount] =
+    readNonNegativeDouble("Enter Expenditure: ");
 
     if (allocatedBudgets[budgetCount] < 0 ||
         expenditures[budgetCount] < 0)

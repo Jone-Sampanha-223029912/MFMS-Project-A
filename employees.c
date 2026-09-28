@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "employees.h"
+#include "input.h"
 
 #define MAX_EMPLOYEES 50
 
@@ -30,8 +31,11 @@ void employeeManagement(void)
         printf("3. Search Employee\n");
         printf("4. Return to Main Menu\n");
 
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            4
+        );
 
         switch (choice)
         {
@@ -70,8 +74,11 @@ void addEmployee(void)
         return;
     }
 
-    printf("\nEnter Employee ID: ");
-    scanf("%d", &newID);
+    newID = readInt(
+        "Enter Employee ID: ",
+        1,
+        999999999
+    );
 
     if (newID <= 0)
     {
@@ -90,20 +97,26 @@ void addEmployee(void)
 
     employeeIDs[employeeCount] = newID;
 
-    printf("Enter Employee Name: ");
-    scanf(" %49[^\n]", employeeNames[employeeCount]);
+    readText(
+        "Enter Employee Name: ",
+        employeeNames[employeeCount],
+        sizeof(employeeNames[employeeCount])
+    );
 
-    printf("Enter Department: ");
-    scanf(" %49[^\n]", employeeDepartments[employeeCount]);
+    readText(
+        "Enter Department: ",
+        employeeDepartments[employeeCount],
+        sizeof(employeeDepartments[employeeCount])
+    );
 
-    printf("Enter Basic Salary: ");
-    scanf("%lf", &basicSalaries[employeeCount]);
+    basicSalaries[employeeCount] =
+    readNonNegativeDouble("Enter Basic Salary: ");
 
-    printf("Enter Housing Allowance: ");
-    scanf("%lf", &housingAllowances[employeeCount]);
+housingAllowances[employeeCount] =
+    readNonNegativeDouble("Enter Housing Allowance: ");
 
-    printf("Enter Transport Allowance: ");
-    scanf("%lf", &transportAllowances[employeeCount]);
+transportAllowances[employeeCount] =
+    readNonNegativeDouble("Enter Transport Allowance: ");
 
     if (basicSalaries[employeeCount] < 0 ||
         housingAllowances[employeeCount] < 0 ||
@@ -178,8 +191,11 @@ void searchEmployee(void)
         return;
     }
 
-    printf("\nEnter Employee ID to search: ");
-    scanf("%d", &searchID);
+    searchID = readInt(
+        "\nEnter Employee ID to search: ",
+        1,
+        999999999
+    );
 
     for (i = 0; i < employeeCount; i++)
     {

@@ -5,7 +5,7 @@
 #include "suppliers.h"
 #include "assets.h"
 #include "reports.h"
-
+#include "input.h"
 
 void displayMainMenu(void);
 
@@ -22,14 +22,23 @@ int main()
     printf("MUNICIPAL FINANCIAL MANAGEMENT SYSTEM\n");
     printf("========================================\n");
 
-    printf("Enter Municipality Name: ");
-    scanf(" %49[^\n]", municipality);
+    readText(
+        "Enter Municipality Name: ",
+        municipality,
+        sizeof(municipality)
+    );
 
-    printf("Enter Mayor Name: ");
-    scanf(" %49[^\n]", mayor);
+    readText(
+        "Enter Mayor Name: ",
+        mayor,
+        sizeof(mayor)
+    );
 
-    printf("Enter Population: ");
-    scanf("%d", &population);
+    population = readInt(
+        "Enter Population: ",
+        1,
+        100000000
+    );
 
     printf("\n========================================\n");
     printf("MUNICIPALITY INFORMATION\n");
@@ -44,7 +53,11 @@ int main()
     {
         displayMainMenu();
 
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            6
+        );
 
         switch (choice)
         {
@@ -96,5 +109,4 @@ void displayMainMenu(void)
     printf("5. Reports\n");
     printf("6. Exit\n");
 
-    printf("Enter your choice: ");
 }

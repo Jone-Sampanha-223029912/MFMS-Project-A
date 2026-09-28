@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "assets.h"
+#include "input.h"
 
 #define MAX_ASSETS 30
 
@@ -30,8 +31,11 @@ void assetManagement(void)
         printf("3. Search Asset\n");
         printf("4. Return to Main Menu\n");
 
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            4
+        );
 
         switch (choice)
         {
@@ -74,8 +78,11 @@ void addAsset(void)
     printf("ADD ASSET\n");
     printf("========================================\n");
 
-    printf("Enter Asset ID: ");
-    scanf("%d", &newID);
+    newID = readInt(
+        "Enter Asset ID: ",
+        1,
+        999999999
+    );
 
     if (newID <= 0)
     {
@@ -94,14 +101,21 @@ void addAsset(void)
 
     assetIDs[assetCount] = newID;
 
-    printf("Enter Asset Name: ");
-    scanf(" %49[^\n]", assetNames[assetCount]);
+    readText(
+        "Enter Asset Name: ",
+        assetNames[assetCount],
+        sizeof(assetNames[assetCount])
+    );
 
-    printf("Enter Asset Type: ");
-    scanf(" %49[^\n]", assetTypes[assetCount]);
+    readText(
+        "Enter Asset Type: ",
+        assetTypes[assetCount],
+        sizeof(assetTypes[assetCount])
+    );
 
-    printf("Enter Purchase Value: ");
-    scanf("%lf", &purchaseValues[assetCount]);
+    purchaseValues[assetCount] = readNonNegativeDouble(
+        "Enter Purchase Value: "
+    );
 
     if (purchaseValues[assetCount] < 0)
     {
@@ -109,11 +123,17 @@ void addAsset(void)
         return;
     }
 
-    printf("Enter Department: ");
-    scanf(" %49[^\n]", assetDepartments[assetCount]);
+    readText(
+        "Enter Department: ",
+        assetDepartments[assetCount],
+        sizeof(assetDepartments[assetCount])
+    );
 
-    printf("Enter Condition: ");
-    scanf(" %29[^\n]", assetConditions[assetCount]);
+    readText(
+        "Enter Condition: ",
+        assetConditions[assetCount],
+        sizeof(assetConditions[assetCount])
+    );
 
     assetCount++;
 
@@ -161,8 +181,11 @@ void searchAsset(void)
         return;
     }
 
-    printf("\nEnter Asset ID to search: ");
-    scanf("%d", &searchID);
+    searchID = readInt(
+        "\nEnter Asset ID to search: ",
+        1,
+        999999999
+    );
 
     for (i = 0; i < assetCount; i++)
     {

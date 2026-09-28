@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "suppliers.h"
+#include "input.h"
 
 #define MAX_SUPPLIERS 20
 
@@ -29,8 +30,11 @@ void supplierManagement(void)
         printf("3. Search Supplier\n");
         printf("4. Return to Main Menu\n");
 
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = readInt(
+            "Enter your choice: ",
+            1,
+            4
+        );
 
         switch (choice)
         {
@@ -73,8 +77,11 @@ void addSupplier(void)
     printf("ADD SUPPLIER\n");
     printf("========================================\n");
 
-    printf("Enter Supplier ID: ");
-    scanf("%d", &newID);
+    newID = readInt(
+        "Enter Supplier ID: ",
+        1,
+        999999999
+    );
 
     if (newID <= 0)
     {
@@ -93,17 +100,29 @@ void addSupplier(void)
 
     supplierIDs[supplierCount] = newID;
 
-    printf("Enter Supplier Name: ");
-    scanf(" %99[^\n]", supplierNames[supplierCount]);
+    readText(
+        "Enter Supplier Name: ",
+        supplierNames[supplierCount],
+        sizeof(supplierNames[supplierCount])
+    );
 
-    printf("Enter Email: ");
-    scanf(" %99[^\n]", supplierEmails[supplierCount]);
+    readText(
+        "Enter Email: ",
+        supplierEmails[supplierCount],
+        sizeof(supplierEmails[supplierCount])
+    );
 
-    printf("Enter Phone Number: ");
-    scanf(" %29[^\n]", supplierPhones[supplierCount]);
+    readText(
+        "Enter Phone Number: ",
+        supplierPhones[supplierCount],
+        sizeof(supplierPhones[supplierCount])
+    );
 
-    printf("Enter Town: ");
-    scanf(" %49[^\n]", supplierTowns[supplierCount]);
+    readText(
+        "Enter Town: ",
+        supplierTowns[supplierCount],
+        sizeof(supplierTowns[supplierCount])
+    );
 
     supplierCount++;
 
@@ -152,8 +171,11 @@ void searchSupplier(void)
         return;
     }
 
-    printf("\nEnter Supplier Name to search: ");
-    scanf(" %99[^\n]", searchName);
+    readText(
+        "\nEnter Supplier Name to search: ",
+        searchName,
+        sizeof(searchName)
+    );
 
     for (i = 0; i < supplierCount; i++)
     {
