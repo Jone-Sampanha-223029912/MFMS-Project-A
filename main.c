@@ -2,26 +2,54 @@
 
 int main()
 {
-    char municipality[50];
-    char mayor[50];
-    int population;
+    int choice;
 
-    printf("Municipal Financial Management System\n");
-    printf("Welcome to Windhoek Municipality\n");
+    do
+    {
+        printf("\n========================================\n");
+        printf("MUNICIPAL FINANCIAL MANAGEMENT SYSTEM\n");
+        printf("========================================\n");
+        printf("1. Employee Management\n");
+        printf("2. Budget Management\n");
+        printf("3. Supplier Management\n");
+        printf("4. Asset Management\n");
+        printf("5. Reports\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
 
-    printf("Enter Municipality Name: ");
-    scanf("%49s", municipality);
+        scanf("%d", &choice);
 
-    printf("Enter Mayor Name: ");
-    scanf("%49s", mayor);
+        switch (choice)
+        {
+            case 1:
+                printf("Employee Management selected.\n");
+                break;
 
-    printf("Enter Population: ");
-    scanf("%d", &population);
+            case 2:
+                printf("Budget Management selected.\n");
+                break;
 
-    printf("\n---------------------------------\n");
-    printf("Municipality : %s\n", municipality);
-    printf("Mayor        : %s\n", mayor);
-    printf("Population   : %d\n", population);
+            case 3:
+                printf("Supplier Management selected.\n");
+                break;
+
+            case 4:
+                printf("Asset Management selected.\n");
+                break;
+
+            case 5:
+                printf("Reports selected.\n");
+                break;
+
+            case 6:
+                printf("Exiting system. Goodbye.\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please select 1 to 6.\n");
+        }
+
+    } while (choice != 6);
 
     return 0;
 }
