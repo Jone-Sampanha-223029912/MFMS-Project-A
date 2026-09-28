@@ -4,6 +4,7 @@
 #include "budget.h"
 #include "suppliers.h"
 #include "assets.h"
+#include "reports.h"
 
 
 void displayMainMenu(void);
@@ -64,7 +65,7 @@ int main()
                 break;
 
             case 5:
-                printf("\nReports will be added later.\n");
+                reportsManagement();
                 break;
 
             case 6:

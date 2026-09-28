@@ -205,3 +205,98 @@ void searchEmployee(void)
 
     printf("\nEmployee not found.\n");
 }
+int getEmployeeCount(void)
+{
+    return employeeCount;
+}
+
+
+double getAverageEmployeeSalary(void)
+{
+    int i;
+    double total = 0.0;
+
+    if (employeeCount == 0)
+    {
+        return 0.0;
+    }
+
+    for (i = 0; i < employeeCount; i++)
+    {
+        total += calculateSalary(
+            basicSalaries[i],
+            housingAllowances[i],
+            transportAllowances[i]
+        );
+    }
+
+    return total / employeeCount;
+}
+
+
+double getHighestEmployeeSalary(void)
+{
+    int i;
+    double highest;
+
+    if (employeeCount == 0)
+    {
+        return 0.0;
+    }
+
+    highest = calculateSalary(
+        basicSalaries[0],
+        housingAllowances[0],
+        transportAllowances[0]
+    );
+
+    for (i = 1; i < employeeCount; i++)
+    {
+        double salary = calculateSalary(
+            basicSalaries[i],
+            housingAllowances[i],
+            transportAllowances[i]
+        );
+
+        if (salary > highest)
+        {
+            highest = salary;
+        }
+    }
+
+    return highest;
+}
+
+
+double getLowestEmployeeSalary(void)
+{
+    int i;
+    double lowest;
+
+    if (employeeCount == 0)
+    {
+        return 0.0;
+    }
+
+    lowest = calculateSalary(
+        basicSalaries[0],
+        housingAllowances[0],
+        transportAllowances[0]
+    );
+
+    for (i = 1; i < employeeCount; i++)
+    {
+        double salary = calculateSalary(
+            basicSalaries[i],
+            housingAllowances[i],
+            transportAllowances[i]
+        );
+
+        if (salary < lowest)
+        {
+            lowest = salary;
+        }
+    }
+
+    return lowest;
+}

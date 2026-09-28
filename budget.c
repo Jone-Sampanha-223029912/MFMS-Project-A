@@ -117,3 +117,52 @@ void displayBudgets(void)
         }
     }
 }
+int getBudgetCount(void)
+{
+    return budgetCount;
+}
+
+
+double getTotalAllocatedBudget(void)
+{
+    int i;
+    double total = 0.0;
+
+    for (i = 0; i < budgetCount; i++)
+    {
+        total += allocatedBudgets[i];
+    }
+
+    return total;
+}
+
+
+double getTotalExpenditure(void)
+{
+    int i;
+    double total = 0.0;
+
+    for (i = 0; i < budgetCount; i++)
+    {
+        total += expenditures[i];
+    }
+
+    return total;
+}
+
+
+int getOverBudgetCount(void)
+{
+    int i;
+    int count = 0;
+
+    for (i = 0; i < budgetCount; i++)
+    {
+        if (expenditures[i] > allocatedBudgets[i])
+        {
+            count++;
+        }
+    }
+
+    return count;
+}

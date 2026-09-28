@@ -12,4 +12,9 @@ double calculateSalary(
     double transport
 );
 
+int getEmployeeCount(void);
+double getAverageEmployeeSalary(void);
+double getHighestEmployeeSalary(void);
+double getLowestEmployeeSalary(void);
+
 #endif

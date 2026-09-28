@@ -175,3 +175,7 @@ void searchSupplier(void)
 
     printf("\nSupplier not found.\n");
 }
+int getSupplierCount(void)
+{
+    return supplierCount;
+}

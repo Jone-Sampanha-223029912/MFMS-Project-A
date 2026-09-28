@@ -185,3 +185,7 @@ void searchAsset(void)
 
     printf("\nAsset not found.\n");
 }
+int getAssetCount(void)
+{
+    return assetCount;
+}
