@@ -2,6 +2,7 @@
 
 #include "employees.h"
 #include "budget.h"
+#include "suppliers.h"
 
 
 void displayMainMenu(void);
@@ -54,7 +55,7 @@ int main()
                 break;
 
             case 3:
-                printf("\nSupplier Management will be added next.\n");
+                supplierManagement();
                 break;
 
             case 4:
