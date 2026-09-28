@@ -2,7 +2,7 @@
 
 #define MAX_EMPLOYEES 50
 
-/* Employee data */
+
 int employeeIDs[MAX_EMPLOYEES];
 char employeeNames[MAX_EMPLOYEES][50];
 char departments[MAX_EMPLOYEES][50];
@@ -13,7 +13,7 @@ double transportAllowances[MAX_EMPLOYEES];
 
 int employeeCount = 0;
 
-/* Function declarations */
+
 void displayMainMenu(void);
 void employeeManagement(void);
 void addEmployee(void);
@@ -142,7 +142,7 @@ void addEmployee(void)
         return;
     }
 
-    /* Check for duplicate ID */
+    
     for (i = 0; i < employeeCount; i++)
     {
         if (employeeIDs[i] == newID)
